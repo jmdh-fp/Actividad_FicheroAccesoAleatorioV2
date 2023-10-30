@@ -20,14 +20,14 @@ public class Main {
         int numEscrituras = 0;
         int numSustituciones = 0;
         try (RandomAccessFile archivo = new RandomAccessFile(fichero, "rw")) {
-            String lectura;
+            String linea;
             archivo.seek(0);
             StringBuilder sb = new StringBuilder();
             long pos = 0;
             boolean haySusti;
-            while ((lectura = archivo.readLine()) != null) {
+            while ((linea = archivo.readLine()) != null) {
                 sb.setLength(0); // Limpia el sb
-                int index = lectura.indexOf(palabra);
+                int index = linea.indexOf(palabra);
                 haySusti=false;
                 if (index != -1) {  // Si hay palabra
                     haySusti=true;
@@ -35,7 +35,7 @@ public class Main {
                     archivo.seek(pos + index);//posición a partir de la cual escribir en fichero
                     // Mete en sb PALABRA+resto de la linea. No mete el texto anterior a la palabra
                     sb.append(PAL_MAY);
-                    sb.append(lectura.substring(index + LONG_PALABRA));
+                    sb.append(linea.substring(index + LONG_PALABRA));
                     //Sigue explorando resto de la línea y sustituyendo sobre el sb
                     index=0;
                     while ((index = sb.indexOf(palabra, index + LONG_PALABRA)) != -1) {
