@@ -7,27 +7,32 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String fichero, palabra;
+        String fichero, palabra, linea;
+        int numEscrituras = 0;
+        int numSustituciones = 0;
+        long pos = 0;
+        StringBuilder sb = new StringBuilder();
+        boolean haySusti;
+        int index;
+
         do {
             System.out.println("Nombre del fichero: ");
             fichero = sc.nextLine();
         } while (!new File(fichero).isFile());
+
         System.out.println("Palabra a cambiar: ");
         palabra = sc.nextLine();
+
         final String PAL_MAY = palabra.toUpperCase();
         final int LONG_PALABRA = palabra.length();
+
         long tiempo = System.currentTimeMillis();
-        int numEscrituras = 0;
-        int numSustituciones = 0;
+
         try (RandomAccessFile archivo = new RandomAccessFile(fichero, "rw")) {
-            String linea;
-            archivo.seek(0);
-            StringBuilder sb = new StringBuilder();
-            long pos = 0;
-            boolean haySusti;
+            archivo.seek(pos);
             while ((linea = archivo.readLine()) != null) {
                 sb.setLength(0); // Limpia el sb
-                int index = linea.indexOf(palabra);
+                index = linea.indexOf(palabra);
                 haySusti=false;
                 if (index != -1) {  // Si hay palabra
                     haySusti=true;
