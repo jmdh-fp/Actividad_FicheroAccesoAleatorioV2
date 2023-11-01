@@ -16,13 +16,13 @@ import java.util.regex.Pattern;
  Realiza acceso aleatorio al fichero.
  */
 public class MainPalCompleta {
-    static long numSustituciones = 0;
+    static long numSustituciones = 0L;
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String fichero, palabra, linea;
         int index;
 
-        long numEscrituras = 0;
+        long numEscrituras = 0L;
 
 
 

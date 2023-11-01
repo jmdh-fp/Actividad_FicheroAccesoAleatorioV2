@@ -17,8 +17,8 @@ public class Main {
         String fichero, palabra, linea;
         int index;
 
-        long numEscrituras = 0;
-        long numSustituciones = 0;
+        long numEscrituras = 0L;
+        long numSustituciones = 0L;
 
         StringBuilder sb = new StringBuilder();
 
@@ -44,7 +44,6 @@ public class Main {
                 sb.setLength(0); // Limpia el sb
                 index = linea.indexOf(palabra);
                 if (index != -1) {  // Si hay palabra
-                    numSustituciones++;
                     archivo.seek(posFichero);//posición a partir de la cual escribir en fichero
 
                     // Reemplazos en un sb es mucho más eficiente que con String, por ej. con linea.replaceall(...)
